@@ -1,0 +1,49 @@
+
+<div class="jumbotron">
+  <section ng-if="comparative.length > 0" style="text-align:center">
+    <h2>Cell Comparative</h2>
+    <div style="width: 682px; display:inline-block">
+      <div class="well" style="position:relative; float:left; width: 300px;height: 400px;">
+        <h3>{{comparative[0].name}}</h3>
+        <p ng-class="{'line-red' : comparative[0].price > comparative[1].price,'line-green' : comparative[1].price > comparative[0].price }">Preço: {{comparative[0].price | currency:'R$'}}</p>
+        <p>Processador: {{comparative[0].proc}}</p>
+        <p ng-class="{'line-red' : comparative[0].mem < comparative[1].mem,'line-green' : comparative[1].mem < comparative[0].mem }">Memória: {{comparative[0].mem + ' GB'}}</p>
+        <p ng-class="{'line-red' : comparative[0].ram < comparative[1].ram,'line-green' : comparative[1].ram < comparative[0].ram }">RAM: {{comparative[0].ram + ' GB'}}</p>
+        <p>Descrição: {{comparative[0].description}}</p>
+        <button class="btn btn-danger" ng-click="removeComparative(0)">Remove</button>
+      </div>
+      <div ng-if="comparative.length > 1 " class="well" style="position:relative; float:right; width: 300px;height: 400px;">
+        <h3>{{comparative[1].name}}</h3>
+        <p ng-class="{'line-red' : comparative[1].price > comparative[0].price,'line-green' : comparative[0].price > comparative[1].price }">Preço: {{comparative[1].price | currency:'R$'}}</p>
+        <p>Processador: {{comparative[1].proc}}</p>
+        <p ng-class="{'line-red' : comparative[1].mem < comparative[0].mem,'line-green' : comparative[0].mem < comparative[1].mem }">Memória: {{comparative[1].mem + ' GB'}}</p>
+        <p ng-class="{'line-red' : comparative[1].ram < comparative[0].ram,'line-green' : comparative[0].ram < comparative[1].ram }">RAM: {{comparative[1].ram + ' GB'}}</p>
+        <p>Descrição: {{comparative[1].description}}</p>
+        <button class="btn btn-danger" ng-click="removeComparative(0)">Remove</button>
+      </div>
+    </div>
+  </section>
+  <h1>Avaliable cellphones</h1>
+  <div>
+    <label>Filter by</label>
+    <button class="btn btn-primary" ng-class="{'btn-success':favoriteFilterOn}" ng-click="toogleFavoriteFilter()">Favorites</button>
+  </div>
+  <section style="margin:10px">
+    <div ng-repeat="phone in phones | filter:phoneFilters" style="width:350px; float:left; margin:5px">
+      <div class="thumbnail">
+        <div class="caption">
+          <h3>{{phone.name}}</h3>
+          <p>Preço: {{phone.price | currency:'R$'}}</p>
+          <p>Processador: {{phone.proc}}</p>
+          <p>Memória: {{phone.mem + ' GB'}}</p>
+          <p>RAM: {{phone.ram + ' GB'}}</p>
+          <p>Descrição: {{phone.description}}</p>
+          <p>
+            <a href="#" class="btn btn-primary" ng-click="toogleLike(phone)" ng-class="{'btn-success':phone.favorite}" role="button"><span ng-if="!phone.favorite">Like</span> <span ng-if="phone.favorite">Dislike</span></a>
+            <a href="#" ng-if="comparative.length < 2" class="btn btn-default" ng-click="addToCompare(phone)" role="button">Compare</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

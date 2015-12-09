@@ -1,0 +1,50 @@
+<h1>Cellphones</h1>
+<table class="table table-striped">
+  <tr>
+    <th>Nome</th>
+    <th>Preço</th>
+    <th>Processador</th>
+    <th>Memória</th>
+    <th>RAM</th>
+    <th>Descrição</th>
+    <th>Opções</th>
+  </tr>
+  <tr ng-repeat="phone in phones">
+    <td>{{phone.name }}</td>
+    <td>{{phone.price}}</td>
+    <td>{{phone.proc}}</td>
+    <td>{{phone.mem}}</td>
+    <td>{{phone.ram}}</td>
+    <td>{{phone.description}}</td>
+    <td><button class="btn btn-danger" ng-click="remove(phone)">Remove</button></td>
+  </tr>
+</table>
+
+<h1>Add a new cellphone</h1>
+<form>
+  <div class="form-group">
+    <label>Nome</label>
+    <input type="text" ng-model="phone.name" class="form-control" placeholder="Nome">
+  </div>
+  <div class="form-group">
+    <label>Preço</label>
+    <input type="text" ng-model="phone.price" class="form-control" placeholder="Preço">
+  </div>
+  <div class="form-group">
+    <label>Processador</label>
+    <input type="text" ng-model="phone.proc" class="form-control" placeholder="Processador">
+  </div>
+  <div class="form-group">
+    <label>MEM (GB)</label>
+    <input type="text" ng-model="phone.mem" class="form-control" placeholder="MEM (GB)">
+  </div>
+  <div class="form-group">
+    <label>RAM (GB)</label>
+    <input type="text" ng-model="phone.ram" class="form-control" placeholder="RAM (GB)">
+  </div>
+  <div class="form-group">
+    <label>Descrição</label>
+    <textarea ng-model="phone.description"></textarea>
+  </div>
+  <button type="submit" class="btn btn-default" ng-click="addPhone(phone)">Add</button>
+</form>

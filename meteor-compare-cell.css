@@ -1,0 +1,16 @@
+/* CSS declarations go here */
+.line-red{
+  background-color:red;
+  color: white;
+  text-shadow: 1px 1px 1px black;
+  margin-left: -20px;
+  margin-right: -20px;
+}
+
+.line-green{
+  background-color: lightgreen;
+  color: white;
+  text-shadow: 1px 1px 1px black;
+  margin-left: -20px;
+  margin-right: -20px;
+}
